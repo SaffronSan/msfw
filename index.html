@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Shoe Store</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script>
+	<script src="https://smtpjs.com/v3/smtp.js">
+	</script>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body onload="keyEve();setup();hideForm();">
+	<div class="container">
+		  <div class="title">
+			<nav class="menu" style="display: flex;justify-content: space-between;">
+				<h1><i class="material-icons">rocket_launch</i></h1>
+        <button onclick = "window.location.href='/reference.html';" class = "ref"><i class="material-icons">source</i></button>
+        <button  class="bag"><i id = "checkout" class="material-icons">shopping_bag</i></button>
+        <div class="searchcont">
+          <input id = "sr" onkeydown = "if(event.key == 13){see();}" type="text" placeholder="Search" >
+          <button id = "scbutton" onclick = "see();"><i class="material-icons">search</i></button>
+          <dialog id="availablity">
+            <ul id="avaul"></ul>
+            <button onclick = "expless();"><i class="material-icons">expand_less</i></button>
+          </dialog>
+        </div>
+        </nav>
+      </div>
+      <dialog id = "diaTotal">
+        <ul id="total"></ul>
+        <label id = "totLab">Total(taxed)</label>&nbsp;
+        <label  id = "price"></label>
+        <div class="diadiv">         
+          <button onclick="showForm();"><i id = "checkout" class="material-icons">shopping_cart</i></button>
+          <button  id = "close"><i class="material-icons">expand_less</i></button>
+        </div>
+      </dialog>
+      <div id="form" style = "margin: 150px 0px 0px 50rem; padding: 50px; position: absolute;">
+        <nav class = "navClose" style = "float:right;">
+          <button onclick = "hideForm();"><i id = "checkout" class="material-icons">close</i></button>
+        </nav>
+        <form draggable="true" action="" method="post">
+          <label>Type your email here<br>to recieve the receipt!<br>Do not use your school email!</label><br>
+          <input id = "eint" type="text" placeholder="name@email.com">
+          <input  onclick = " sendEmail()" type="button" value="Send">
+        </form>
+      </div>
+      <section id="page1">
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Blego.jpg" style = "transform: scaleX(-1);"/>
+          <p id = "pn1" class = "name">Lego J'S</p>
+          <label class = "1"  id="ky1">Red</label>
+          <label class = "1"  id="ky2">Black</label>
+          <label class = "1"  id="ky3">White</label><br><br>
+          <label for="" class="xinfo">The hottes't lego you've ever seen</label><br><br>
+          <label id="pr1">$1000.50</label><br><br>
+          <button id = "it1" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/RCamo.jpeg"/>
+           <p id = "pn2" class = "name">Camo Shoe's</p>
+           <label class = "2"  id="ky1">Green</label>
+           <label class = "2"  id="ky2">Camo</label>
+           <label class = "2"  id="ky3">White</label><br><br>
+           <label for="" class="xinfo">You can't see me</label><br><br>
+           <label  id="pr2">$210.50</label><br><br>
+          <button id = "it2" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/white.jpg" />
+          <p id = "pn3" class = "name">White Nike Supreme</p>
+          <label class = "3"  id="ky1">Supreme</label>
+          <label class = "3"  id="ky2">red</label>
+          <label class = "3"  id="ky3">White</label><br><br>
+          <label class = "xinfo">A combo between one supreme & nike</label><br><br>
+          <label  id="pr3">$199.99</label><br><br>
+          <button id = "it3" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/BpineJ.jpeg"/>
+          <p id = "pn4" class = "name">Air Jordan</p>
+          <label class = "4"  id="ky1">Green</label>
+          <label class = "4"  id="ky2">Black</label>
+          <label class = "4"  id="ky3">Pine</label><br><br>
+          <span class="xinfo">Green like my bills!</span><br><br>
+          <label id="pr4">$250.50</label><br>
+          <button id = "it4" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/yellowshoes.jpeg" />
+           <p id = "pn5" class = "name">Lemonade</p>
+           <label class = "5"  id="ky1">Yellow</label>
+           <label class = "5"  id="ky2">Lemonade</label>
+           <label class = "5"  id="ky3">White</label><br><br>
+           <span class="xinfo">When life gives u lemons</span><br><br>
+           <label  id="pr5">$150.50</label><br>
+          <button id = "it5" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/Byellow.jpeg" style = "transform: scaleX(-1);"/>
+          <p id = "pn6" class = "name">Blue & Yellow</p>
+          <label class = "6"  id="ky1">Yellow</label>
+          <label class = "6"  id="ky2">Blue</label>
+          <label class = "6"  id="ky3">White</label><br><br>
+          <span class="xinfo">One of the greenist combo!</span><br><br>
+          <label  id="pr6">$100.50</label><br>
+          <button id = "it6" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Bgrateful.jpeg" />
+          <p id = "pn7" class = "name">GrateFul Dead</p>
+           <label class = "7" id="ky1">Yellow</label>
+           <label class = "7"  id="ky2">Blue</label>
+           <label class = "7"  id="ky3">Gold</label><br><br>
+           <span class="xinfo">This will make you grateful</span><br><br>
+          <label id="pr7">$250.00</label><br>
+          <button id = "it7" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/pride90.jpeg" style = "transform: scaleX(-1);"/>
+           <p id = "pn8" class = "name">Pride Max</p>
+           <label class = "8"  id="ky1">Pride</label>
+           <label class = "8"  id="ky2">Colorful</label>
+           <label class = "8"  id="ky3">Pink</label><br><br>
+           <span class="xinfo">This will make you a very "happy" coustomer</span><br><br>
+           <label  id="pr8">$199.99</label><br>
+          <button id = "it8" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/Bdarkair.webp" />
+          <p id = "pn9" class = "name">Dark Air Force</p>
+          <label class = "9"  id="ky1">Black</label>
+          <label class = "9"  id="ky2">Air Force</label>
+          <label class = "9"  id="ky3">White</label><br><br>
+          <span class="xinfo">One of the darkest shoe</span><br><br>
+          <label  id="pr9">$299.99</label><br>
+          <button id = "it9" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+      </section>
+      <section id="page2">
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Black_Air_Force.webp" />
+          <p id = "pn10" class = "name">Black Air Force</p>
+          <label class = "10"  id="ky1">Air Force</label>
+          <label class = "10"  id="ky2">Black</label>
+          <label class = "10"  id="ky3">Dark</label><br><br>
+          <label for="" class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</label><br>
+          <label id="pr10">$199.99</label><br>
+          <button id = "it10" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Air_Force_Navy.avif" />
+           <p id = "pn11" class = "name">Navy Air Force</p>
+           <label class = "11"  id="ky1">Air Force</label>
+           <label class = "11"  id="ky2">Blue</label>
+           <label class = "11"  id="ky3">Navy</label><br><br>
+           <label for="" class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</label><br><br>
+           <label  id="pr11">$199.99</label><br>
+          <button id = "it11" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/Ruby_Air_Force.jpeg" />
+          <p id = "pn12" class = "name">Ruby Air Force</p>
+          <label class = "12"  id="ky1">Air Force</label>
+          <label class = "12"  id="ky2">Red</label>
+          <label class = "12"  id="ky3">Pure</label><br><br>
+          <label class = "xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</label><br><br>
+          <label  id="pr12">$199.99</label><br>
+          <button id = "it12" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Purple_Air_Force.webp" />
+          <p id = "pn13" class = "name">Purple Air Jordan</p>
+          <label class = "13"  id="ky1">Air Force</label>
+          <label class = "13"  id="ky2">Purple</label>
+          <label class = "13"  id="ky3">White</label><br><br>
+          <span class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</span><br><br>
+          <label id="pr13">$199.99</label><br><br>
+          <button id = "it13" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Green_Air_Force.jpeg" />
+           <p id = "pn14" class = "name">Green Air Force</p>
+           <label class = "14"  id="ky1">Air Force</label>
+           <label class = "14"  id="ky2">Green</label>
+           <label class = "14"  id="ky3">White</label><br><br>
+           <span class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</span><br><br>
+           <label  id="pr14">$199.99</label><br><br>
+          <button id = "i14" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/Pride_Air_Force.jpeg" />
+          <p id = "pn15" class = "name">Pride Air Force</p>
+          <label class = "15"  id="ky1">Air Force</label>
+          <label class = "15"  id="ky2">Pride</label>
+          <label class = "15"  id="ky3">White</label><br><br>
+          <span class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</span><br><br>
+          <label  id="pr15">$199.99</label><br><br>
+          <button id = "it15" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Gold_Air_Force.webp" />
+          <p id = "pn16" class = "name">Gold Air Force</p>
+          <label class = "16"  id="ky1">Air Force</label>
+          <label class = "16"  id="ky2">Gold</label>
+          <label class = "16"  id="ky3">White</label><br><br>
+          <span class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</span><br><br>
+          <label id="pr16">$199.99</label><br><br>
+          <button id = "it16" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Brown_Air_Force.jpeg" />
+          <p id = "pn17" class = "name">Brown Air Force</p>
+          <label class = "17"  id="ky1">Air Force</label>
+          <label class = "17"  id="ky2">Brown</label>
+          <label class = "17"  id="ky3">White</label><br><br>
+          <span class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</span><br><br>
+          <label id="pr17">$199.99</label><br>
+          <button id = "it17" class="buy"n id = "it17" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/Camo_Air_Force.jpeg" />
+          <p id = "pn18" class = "name">Camo Air Force</p>
+          <label class = "18"  id="ky1">Air Force</label>
+          <label class = "18"  id="ky2">Camo</label>
+          <label class = "18"  id="ky3">White</label><br><br>
+          <span class="xinfo">The b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</span><br><br>
+          <label id="pr18">$199.99</label><br>
+          <button id = "it18" class="buy"tton id = "it18" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+      </section>
+      <section id="page3">
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Bdrake.jpeg" />
+          <p id = "pn19" class = "name">Solid Gold OVO x Air Jordan</p>
+          <label class = "19"  id="ky1">Golden</label>
+          <label class = "19"  id="ky2">Super High</label>
+          <label class = "19"  id="ky3">Pure</label><br><br>
+          <label for="" class="xinfo">Drake wanted the his shoes to match his net worth</label><br><br>
+          <label id="pr19">$2,000,000</label><br><br>
+          <button id = "it19" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/Pigeon.webp" />
+           <p id = "pn20" class = "name">Pigeon Shoe</p>
+           <label class = "20"  id="ky1">Gray</label>
+           <label class = "20"  id="ky2">High</label>
+           <label class = "20"  id="ky3">White</label><br><br>
+           <label for="" class="xinfo">This is a real shoe, and it actually cost that much!!</label><br><br>
+           <label  id="pr20">$6,250</label><br><br>
+          <button id = "it20" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/BackToTheFuture.jpeg" />
+          <p id = "pn21" class = "name">Nike Air Mag Back to the Future</p>
+          <label class = "21"  id="ky1">Gray</label>
+          <label class = "21"  id="ky2">High</label>
+          <label class = "21"  id="ky3">Blue</label><br><br>
+          <label class = "xinfo">This will make you feel like its already Friday!</label><br><br>
+          <label  id="pr21">$14,500</label><br><br>
+          <button id = "it21" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/EminemJ.webp" />
+          <p id = "pn22" class = "name">Eminem J's</p>
+          <label class = "22"  id="ky1">High</label>
+          <label class = "22"  id="ky2">Black</label>
+          <label class = "22"  id="ky3">Rapper</label><br><br>
+          <span class="xinfo">Eminem Custom Shoes</span><br><br>
+          <label id="pr22">$30,000.00</label>
+          <button id = "it22" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/JordanOVO.jpeg" />
+           <p id = "pn23" class = "name">Air Jordan 10 OVO</p>
+           <label class = "23"  id="ky1">High</label>
+           <label class = "23"  id="ky2">Pure</label>
+           <label class = "23"  id="ky3">White</label><br><br>
+           <span class="xinfo">Good looking & high value!</span><br><br>
+           <label  id="pr23">$20,000.00</label><br><br>
+          <button id = "it23" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/Buscemi.jpg" />
+          <p id = "pn24" class = "name">Buscemi 100 MM Diamond</p>
+          <label class = "24"  id="ky1">Super High</label>
+          <label class = "24"  id="ky2">Gold</label>
+          <label class = "24"  id="ky3">White</label><br><br>
+          <span class="xinfo">A very hard to obtain shoe, bc of how much gold & diamond it has!</span><br><br>
+          <label  id="pr24">$100,000.00</label><br>
+          <button id = "it24" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+        <div class="collection_of_prod" style="margin-top: 50px;">
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/MJConverse.jpeg" />
+          <p id = "pn25" class = "name">Michael Jordan’s Game Worn Converse Fastbreak</p>
+          <label class="25" id = "ky1">Super High</label>
+          <label class="25" id = "ky2">MJ</label>
+          <label class="25" id = "ky3">White</label><br><br>
+          <span class="xinfo">MJ orginal converse, is worth almost 200K</span><br><br>
+          <label id="pr25">$190,373.00</label><br><br>
+          <button id = "it25" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style="">
+          <img alt="img" src="/img/nikemoon.jpeg" />
+           <p id = "pn26" class = "name">Nike Moon shoes</p>
+           <label class="26" id = "ky1">Super High</label>
+           <label class="26" id = "ky2">Sports</label>
+           <label class="26" id = "ky3">White</label><br><br>
+           <span class="xinfo">Bill Bowerman poured rubber into his wife’s waffle iron to make a prototype sole for a new shoe. Bowerman went on to co-found the company that would one day become Nike with Phil Knight.</span><br><br>
+           <label  id="pr26">$437,000.00</label><br><br>
+          <button id = "it26" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        <div class="prod_con" style=";">
+          <img alt="img" src="/img/kobe.avif" />
+          <p id = "pn27" class = "name">Nike Kobe 9 Premium</span></p>
+          <label class="27" id = "ky1">High</label>
+          <label class="27" id = "ky2">Sports</label>
+          <label class="27" id = "ky3">White</label><br><br>
+          <span class="xinfo">Kobe used these to score some three's</span><br><br>
+          <label  id="pr27">$4,500.00</label><br><br>
+          <button id = "it27" class="buy" onclick = "updatePrice(this.id);">ADD</button>
+        </div>
+        </div>
+      </section>
+  </div>
+  <div class="bottomarea" style = "margin: 10px 0px 0px 0px;">
+    <button class="left" onclick = "changePage('back')"><i class="material-icons">arrow_back</i></button>
+    <button class="right" onclick = "changePage('next')"> <i class="material-icons">arrow_forward</i></button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

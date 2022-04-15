@@ -1,0 +1,253 @@
+.collection_of_prod, .deldiv, .diadiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+img{
+  width: 400px;
+  height: 200px;
+  margin: 0px 10px 0px 0px;
+  border: 2px solid beige;
+  border-radius: 10px;
+}
+#logo{
+  width: 50px;
+  height: 25px;
+  margin-left: 10px;
+}
+.price{
+ text-align: center;
+}
+h1 i{
+  background: none;
+  color: white;
+}
+body{
+  background: lavender;
+  color: darkslategray;
+  margin: 0px;
+}
+.buy{
+  margin: 0px 50px 0px 125px;
+}
+/*DROP down Menu */
+.bag{
+  margin: 0px;
+  transition: all ease;
+}
+.dropcontent li .delete{
+  font-size: 18px;
+  padding: 12px 16px;
+  transition: .3s;
+}
+ul{
+  list-style-type: none;
+  padding: 5px;
+}
+#availablity li{
+  transition: ease-in .2s;
+  text-decoration: double;
+  color: royalblue;
+}
+.deldiv li:hover, #availablity li:hover{
+  color: lightsteelblue;
+  margin: 0px 0px 0px 10px;
+}
+#availablity li:hover{
+  text-decoration: underline royalblue;
+}
+.drop_down:hover > .dropcontent{
+  opacity: 1;
+}
+.ref,.bag{
+  width: 100px;
+  height: 50px;
+}
+.prod_con{
+  border: 5px groove rgb(147, 184, 207);
+  border-radius: 5%;
+  width: 400px;
+  padding: 2px;
+  margin: 0px 0px 20px 0px; 
+  background: lavender;
+}
+.title{
+  background: black;
+  border: solid 2px black;
+}
+.menu button{
+  background: inherit;
+  border: none;
+  text-decoration: strong;
+  color: white;
+  width: 250px;
+  padding: 14px 28px;
+  height: 100px;
+  transition: ease-in-out .2s;
+}
+.delete{
+  background: inherit;
+  border: 2px solid darkslategray;
+  color: inherit;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px auto;
+  width: 50px;
+  height: 50px;
+  transition: ease-in .3s;
+}
+.menu button:hover, .delete:hover{
+  background: darkslategray;
+  color: white;
+  border-bottom: groove 5px darkblue;
+}
+.delete:active,.menu button:active{
+  color: darkred;
+  border-bottom: 1px groove royalblue;
+}
+.drop_down .checkout{
+  width: 100px;
+  height: 50px;
+  color: inherit;
+}
+.prod_con button, .bottomarea button{
+  background: inherit;
+  margin: 0px 0px 0px 165px;
+  color: inherit;
+  padding: 10px;
+  border: 2px solid darkslategray;
+  outline: none;
+  transition: all ease-in .3s;
+}
+.prod_con button:hover, .bottomarea button:hover, .diadiv button:hover{
+  background: darkslategray;
+  color: white;
+  text-shadow: 2px 2px black;
+  border-radius: 5%;
+}
+.prod_con button:active, .bottomarea button:active,diadiv button:active{
+  transform: translateY(-5px);
+  box-shadow: 1px 2px 2px 1px darkgrey;
+}
+.bottomarea{
+  display: flex;
+  height: 50px;
+  border: 2px solid navy;
+  border-radius: 2%;
+  padding: 10px;
+}
+.bottomarea button{
+  margin: 0px auto 0px auto;
+}
+#diaTotal{
+  padding: 20px;
+  position: absolute;
+  background: white;
+  color: darkslategray;
+  border: none;
+  right: -600px;
+}
+
+.diadiv button{
+  width: 100px;
+  height: 50px;
+  margin: 0px 150px 0px 100px;
+  background: lavender;
+  color: darkslategray;
+}
+.searchcont button{
+  width: 60px;
+  height: 70px;
+  padding: 2px;
+  margin: 10px 24px 0px 0px;
+  background: #ddd;
+}
+.searchcont input{
+  padding: 10px;
+  height: 50px;
+  width: 200px;
+  margin: 10px 0px 0px 0px;
+  border: none;
+}
+.searchcont {
+  float: right;
+  display: inline-flex;
+  position: relative;
+  left: .1rem;
+  height: 100px;
+}
+#availablity{
+  position: absolute;
+  top: 80px;
+  border:2px solid black;
+  background:white;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+}
+#availablity button{
+  width: 200px;
+  position: static;
+  margin: 0px auto 0px auto;
+  block-size: fit-content;
+  height: fit-content;
+  top:auto;
+  color: darkgray;
+  border: 2px inset lightgray;
+  background: inherit;
+  transition: ease-out .3s;
+}
+#availablity button:hover{
+  background: lightgrey;
+  color: royalblue;
+  border: 2px outset lightgray;
+  transition: ease-in;
+}
+#availablity button:active{
+  box-shadow: 2px 2px 2px 2px silver;
+}
+.navClose button{
+  all: unset;
+}
+form{
+  background: white;
+  border: 2px double lightgray;
+  color: darkslategray;
+  padding: 15px;
+}
+form input[type = "button"]{
+  border-radius: none;
+  background: inherit;
+  transition: all ease-in;
+  border: 2px outset darkslategray; 
+}
+form input[type = "button"]:hover{
+  background: darkslategray;
+  color: white;
+}
+form input[type = "text"]{
+  border: 2px outset darkslategray; 
+  background: inherit;
+  color: black;
+  border-radius: none;
+}
+.navClose button:hover{
+  background: gray;
+  color: white;
+  transition: all ease-in;
+}
+#ky1,#ky2,#ky3{
+  margin: 0px 10px 0px 10px;
+  padding: 5px;
+  border: 2px groove seagreen;
+  border-radius: 10%;
+  background: inherit;
+  color: navy;
+  transition: all ease-in .3s;
+}
+#ky1:hover, #ky2:hover, #ky3:hover{
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(45deg,lavender,lightgray);
+  border-radius: 5%;
+  cursor: pointer;
+}

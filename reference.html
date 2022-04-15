@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Reference</title>
+  <style>
+    body{
+      margin: 0px;
+      background: gray;
+    }
+    .refTitle{
+      background: black;
+      height: 100px;
+      text-align: center;
+    }
+    .refNav{
+      float: right;
+      margin: 10px 0px;
+    }
+    .refNav button{
+      width: 100px;
+      height: 70px;
+      color: white;
+      border: none;
+      background: inherit;
+    }
+    .refcontent{
+      margin: 0px 0px 0px 10px;
+      color: white;
+    }
+    .refcontent a{
+      text-decoration: none;
+      border: 2px solid lightgray;
+      color: white;
+      transition: ease-in-out .2s;
+    }
+    .refcontent a:hover{
+      color: black;
+      background: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <div class="refTitle">
+    <nav class="refNav">
+      <button onclick = "window.location.href='/index.html';"><i class="material-icons">home</i></button>
+    </nav>
+  </div>
+  <div class="refcontent">
+    <h1><a href="https://www.w3schools.com/">W3 School:</a></h1>
+    <p>Used for button affects </p>
+    <h1><a href="https://fonts.google.com/icons">Google Fonts:</a></h1>
+    <p>Used for Icons</p>
+    <h1><a href="https://jquery.com/">Jquery:</a></h1>
+    <p>Used for animation</p>
+    <h1><a href="https://elasticemail.com/">SMTP:</a></h1>
+    <p>Used for sending emails</p>
+  </div>
+</body>
+</html>
