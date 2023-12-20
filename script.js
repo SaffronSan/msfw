@@ -235,9 +235,9 @@ function sendEmail() {
     totalAmount = document.getElementById("total").childNodes.length, 
     date = new Date();
   Email.send({
-    SecureToken: "6c52ceb2-83b9-4677-a7e9-62c821dc5e1e",
+    SecureToken: "",
     To: uemail,
-    From: "redsavage2x@gmail.com",
+    From: "",
     Subject: "Shoe Stores",
     Body:   `${text}<br>Your total for ${totalAmount} items was ${total}!<br>Ordered on ${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}!<br>Thank you for shoping!`,
   }).then(function (message) {
